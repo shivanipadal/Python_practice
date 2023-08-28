@@ -37,3 +37,46 @@ The term "data target" is commonly used in the context of ETL (Extract, Transfor
 * **Database**: It is a set of data catalog table definations organized into a logical group in the AWS group
 * **Crawler**: It is a program that connects to our data store. May be a source or a target progress through a prioritized list of classifiers to determine the schema for our data and then it creates metadata tables in the data catalog
 * **Connection**: It determines the schema of our data. Aws glue provides classifiers for common file types such as csv.json , etc. It also provides classifiers for common relaltional database management systems using JDBC connection.
+
+## Amazon Athena
+
+AWS Athena is an interactive query service provided by Amazon web services that allows you to analyze and query data stored in amazon s3 using sql. It provides a serverless and on-demand approach to query data without the need to setup and manage infrastructure or data warehouses. 
+
+*  **Creating Table in Athena** : To query S3 file data, you must have an external table associated with the file structure. We can create external tables in two ways:
+  
+
+	* Manually.
+
+	* Using AWS Glue Crawler.
+
+*  **Price** : 
+
+    * Amazon calculates the bytes and then rounds them to the nearest megabyte, 10MB being the minimum amount per Query.
+    * You will not be charged for failed queries, statements for managing partitions, as well as Data Definition Language (DDL) statements.
+
+
+Amazon s3 ----> AWS Glue Crawler ----> AWS Glue Data Catalog ----> Amazon Athena ----> Amazon quick-sight 
+
+* githublink for reference:
+    * https://github.com/johnny-chivers/sql-for-athena
+    * https://www.youtube.com/watch?v=f_FUwGF-Ip8&ab_channel=Intellipaat 
+
+## Amazon RDS
+
+* Amazon RDS is relational dabase management service which manages relational databases for users. You can either manually create a backup via snapshot or can have an automated backup performed. MySQL, PostgresSQL, Oracle, SQLServers are available under RDS.
+* Amazon RDS is a manged databse service that supports multiple database engine
+* Amazon RDS Supports two types of storage. General purpose(SSD) and Provisioned IOPS(SSD). General purpose storage is suitable for most workloads, while provisoned iops storage provides higher I/O performance for intensive application.
+* IOPS : input output operations per second
+
+*  **DB Instances** : 
+
+    * Database instance is a set of memory structure that manages the database
+    * Each DB instance runs on DB engine
+    * By default a customer can have 40 RDS instances
+
+*  **DB Instance class** :
+    
+    * It supports mainly three types of storages: Magnestic, General purpose and Provisioned IOPS
+    * Standard Instance class : db.m4, db.m3, db.m1
+    * Memory optimized: db.r4 and db.r3
+    * Burstable performance: db.t2
